@@ -3,9 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Hello World</h1>
-    <p>Hosted</p>
+<div class="wrapper">
+    <header class="header">
+        <div class="container">
+            <div class="header__body">
+                <a href="#" class="header__logo">
+                    <img src="https://play-lh.googleusercontent.com/ahJtMe0vfOlAu1XJVQ6rcaGrQBgtrEZQefHy7SXB7jpijKhu1Kkox90XDuH8RmcBOXNn" alt="YOGA">
+                </a>
+                <nav class="header__menu">
+
+                    <div class="header__burger">
+                        <input id="header__toggle" type="checkbox">
+                        <label class="header__btn" for="header__toggle">
+                            <span></span>
+                        </label>
+                        <ul class="header__list">
+                            <li>
+                                <a href="#" class="header__link">About us</a>
+                            </li>
+                            <li>
+                                <a href="#" class="header__link">Reservation</a>
+                            </li>
+                            <li>
+                                <a href="#" class="header__link">Gallery</a>
+                            </li>
+                            <li>
+                                <a href="#" class="header__link">Blog</a>
+                            </li>
+                            <li>
+                                <a href="#" class="header__link">Elements</a>
+                            </li>
+                            <li>
+                                <a href="#" class="header__link">Shop</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <ul class="header__list">
+                        <li>
+                            <a href="#" class="header__link">About us</a>
+                        </li>
+                        <li>
+                            <a href="#" class="header__link">Reservation</a>
+                        </li>
+                        <li>
+                            <a href="#" class="header__link">Gallery</a>
+                        </li>
+                        <li>
+                            <a href="#" class="header__link">Blog</a>
+                        </li>
+                        <li>
+                            <a href="#" class="header__link">Elements</a>
+                        </li>
+                        <li>
+                            <a href="#" class="header__link">Shop</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <section class="section__form">
+        <div class="flex__form">
+            <div class="form__card">
+                <form action="#">
+                    <h2>Trial Class</h2>
+                    <label for="name"></label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name">
+
+                    <label for="number"></label>
+                    <input type="text" id="number" name="number" placeholder="Enter your phone">
+
+                    <label for="class"></label>
+                    <select id="class" name="class">
+                        <option disabled selected value="Chose">Chose your class</option>
+                        <option value="beginner">Beginner</option>
+                        <option value="middle">Middle</option>
+                        <option value="pro">Pro</option>
+                    </select>
+
+                    <input type="submit" value="Try it">
+                </form>
+            </div>
+            <div class="text__form">
+                <p class="p_f">Just balance <br> your might & body</p>
+                <p class="p_l">Create the healthy living <br> for yourself</p>
+            </div>
+        </div>
+    </section>
+</div>
 </body>
 </html>
