@@ -41,16 +41,28 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
         // Зберігаємо тему в localStorage
         localStorage.setItem('theme', theme);
 
-        // Додаємо/видаляємо клас dark з документа
+        // Додаємо/видаляємо клас dark з HTML елемента
+        const htmlElement = document.documentElement;
+
         if (theme === 'dark') {
-            document.documentElement.classList.add('dark');
+            htmlElement.classList.add('dark');
+            console.log('Dark mode enabled - added class');
         } else {
-            document.documentElement.classList.remove('dark');
+            htmlElement.classList.remove('dark');
+            console.log('Light mode enabled - removed class');
         }
+
+        // Додаємо data-theme атрибут для додаткової перевірки
+        htmlElement.setAttribute('data-theme', theme);
+
+        console.log('Current HTML classes:', htmlElement.className);
+        console.log('Current theme:', theme);
     }, [theme]);
 
     const toggleTheme = () => {
-        setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
+        const newTheme = theme === 'light' ? 'dark' : 'light';
+        console.log('Toggling theme from', theme, 'to', newTheme);
+        setTheme(newTheme);
     };
 
     return (

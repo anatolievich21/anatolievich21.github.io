@@ -1,4 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
+import { useState, useRef, useEffect } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
 import { useLanguage, Language } from '../contexts/LanguageContext';
 
@@ -6,12 +7,35 @@ const Navbar = (): JSX.Element => {
     const location = useLocation();
     const { theme, toggleTheme } = useTheme();
     const { language, setLanguage, t } = useLanguage();
+    const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
+    const dropdownRef = useRef<HTMLDivElement>(null);
 
     const isActive = (path: string) => location.pathname === path;
 
     const handleLanguageChange = (lang: Language) => {
         setLanguage(lang);
+        setIsLanguageDropdownOpen(false);
     };
+
+    const languages = [
+        { code: 'en', name: 'English', flag: '🇺🇸' },
+        { code: 'uk', name: 'Українська', flag: '🇺🇦' },
+        { code: 'ru', name: 'Русский', flag: '🇷🇺' }
+    ];
+
+    const currentLanguage = languages.find(lang => lang.code === language) || languages[0];
+
+    // Close dropdown when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+                setIsLanguageDropdownOpen(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
 
     return (
         <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 transition-all duration-300">
@@ -56,16 +80,45 @@ const Navbar = (): JSX.Element => {
                     {/* Controls */}
                     <div className="flex items-center space-x-4">
                         {/* Language Selector */}
-                        <div className="relative">
-                            <select
-                                value={language}
-                                onChange={(e) => handleLanguageChange(e.target.value as Language)}
-                                className="appearance-none bg-transparent border border-gray-300 dark:border-gray-600 rounded-md px-3 py-1 text-sm text-gray-700 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent cursor-pointer hover:border-purple-500 transition-colors duration-200"
+                        <div className="relative" ref={dropdownRef}>
+                            <button
+                                onClick={() => setIsLanguageDropdownOpen(!isLanguageDropdownOpen)}
+                                className="flex items-center space-x-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:border-purple-500 dark:hover:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 shadow-sm hover:shadow-md"
                             >
-                                <option value="en">EN</option>
-                                <option value="uk">UK</option>
-                                <option value="ru">RU</option>
-                            </select>
+                                <span className="font-medium">{currentLanguage.code.toUpperCase()}</span>
+                                <svg
+                                    className={`w-4 h-4 transition-transform duration-200 ${isLanguageDropdownOpen ? 'rotate-180' : ''}`}
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </button>
+
+                            {/* Dropdown Menu */}
+                            {isLanguageDropdownOpen && (
+                                <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg z-50 overflow-hidden animate-fade-in">
+                                    {languages.map((lang) => (
+                                        <button
+                                            key={lang.code}
+                                            onClick={() => handleLanguageChange(lang.code as Language)}
+                                            className={`w-full flex items-center space-x-3 px-4 py-3 text-sm text-left transition-colors duration-200 ${language === lang.code
+                                                ? 'bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400'
+                                                : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
+                                                }`}
+                                        >
+                                            <span className="text-lg">{lang.flag}</span>
+                                            <span className="font-medium">{lang.name}</span>
+                                            {language === lang.code && (
+                                                <svg className="w-4 h-4 ml-auto text-purple-600 dark:text-purple-400" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                                </svg>
+                                            )}
+                                        </button>
+                                    ))}
+                                </div>
+                            )}
                         </div>
 
                         {/* Theme Toggle */}
@@ -73,6 +126,7 @@ const Navbar = (): JSX.Element => {
                             onClick={toggleTheme}
                             className="relative w-14 h-7 bg-gray-200 dark:bg-gray-700 rounded-full p-1 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
                             aria-label="Toggle theme"
+                            title={`Current theme: ${theme}, Click to switch to ${theme === 'dark' ? 'light' : 'dark'}`}
                         >
                             <div className={`w-5 h-5 bg-white dark:bg-gray-300 rounded-full shadow-lg transform transition-transform duration-300 flex items-center justify-center ${theme === 'dark' ? 'translate-x-7' : 'translate-x-0'
                                 }`}>

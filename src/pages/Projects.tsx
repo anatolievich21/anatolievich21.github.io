@@ -1,32 +1,36 @@
+import { useLanguage } from "../contexts/LanguageContext";
+
 const Projects = (): JSX.Element => {
+    const { t } = useLanguage();
+
     const projects = [
         {
             id: 1,
             title: "E-commerce Platform",
-            description: "Modern e-commerce solution with React, Redux, and Stripe integration. Features include user authentication, product catalog, shopping cart, and secure payment processing.",
+            description: "projects.ecommerce.description",
             image: "/src/img/projects/1.png",
             technologies: ["React", "Redux", "TypeScript", "Tailwind CSS", "Stripe"],
-            status: "Completed",
+            status: "projects.status.completed",
             liveUrl: "https://example.com",
             githubUrl: "https://github.com/username/project"
         },
         {
             id: 2,
             title: "Task Management App",
-            description: "Collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
+            description: "projects.taskmanager.description",
             image: "/src/img/projects/2.png",
             technologies: ["React", "Node.js", "Socket.io", "MongoDB", "Material-UI"],
-            status: "In Progress",
+            status: "projects.status.inprogress",
             liveUrl: "https://example.com",
             githubUrl: "https://github.com/username/project"
         },
         {
             id: 3,
             title: "Weather Dashboard",
-            description: "Beautiful weather application with location-based forecasts, interactive maps, and detailed weather analytics.",
+            description: "projects.weather.description",
             image: "/src/img/projects/3.png",
             technologies: ["React", "OpenWeather API", "Chart.js", "CSS3"],
-            status: "Completed",
+            status: "projects.status.completed",
             liveUrl: "https://example.com",
             githubUrl: "https://github.com/username/project"
         }
@@ -37,10 +41,10 @@ const Projects = (): JSX.Element => {
             <div className="container mx-auto px-4 py-20 max-w-6xl">
                 <div className="text-center mb-16 animate-fade-in">
                     <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent mb-6">
-                        My Projects
+                        {t('projects.title')}
                     </h1>
                     <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                        Here are some of my recent projects that showcase my skills and experience in web development
+                        {t('projects.subtitle')}
                     </p>
                 </div>
 
@@ -58,11 +62,11 @@ const Projects = (): JSX.Element => {
                                     className="w-full h-48 object-cover transition-transform duration-300 hover:scale-105"
                                 />
                                 <div className="absolute top-4 right-4">
-                                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${project.status === 'Completed'
+                                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${project.status === 'projects.status.completed'
                                         ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400'
                                         : 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400'
                                         }`}>
-                                        {project.status}
+                                        {t(project.status)}
                                     </span>
                                 </div>
                             </div>
@@ -72,7 +76,7 @@ const Projects = (): JSX.Element => {
                                     {project.title}
                                 </h3>
                                 <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
-                                    {project.description}
+                                    {t(project.description)}
                                 </p>
 
                                 <div className="flex flex-wrap gap-2 mb-4">
@@ -93,7 +97,7 @@ const Projects = (): JSX.Element => {
                                         rel="noopener noreferrer"
                                         className="flex-1 bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 px-4 rounded-lg text-sm font-medium text-center transition-all duration-300 hover:opacity-90 hover:shadow-lg"
                                     >
-                                        Live Demo
+                                        {t('projects.liveDemo')}
                                     </a>
                                     <a
                                         href={project.githubUrl}

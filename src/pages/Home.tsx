@@ -30,10 +30,10 @@ const Home = (): JSX.Element => {
                 <div className="container mx-auto px-4 max-w-6xl">
                     <div className="text-center mb-16 animate-fade-in">
                         <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent mb-6">
-                            Skills & Expertise
+                            {t('skills.title')}
                         </h1>
                         <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                            Passionate about creating beautiful, functional, and user-friendly web experiences
+                            {t('skills.subtitle')}
                         </p>
                     </div>
 
@@ -65,26 +65,23 @@ const Home = (): JSX.Element => {
                     </div>
 
                     {/* Stats section */}
-                    <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                        {[
-                            { number: "2+", label: "Years Experience" },
-                            { number: "10+", label: "Projects Completed" },
-                            { number: "5+", label: "Technologies" },
-                            { number: "100%", label: "Client Satisfaction" }
-                        ].map((stat, index) => (
-                            <div
-                                key={stat.label}
-                                className="animate-fade-in"
-                                style={{ animationDelay: `${1 + index * 0.1}s` }}
-                            >
-                                <div className="text-3xl md:text-4xl font-bold text-purple-500 dark:text-purple-400 mb-2">
-                                    {stat.number}
-                                </div>
-                                <div className="text-gray-600 dark:text-gray-400 font-medium">
-                                    {stat.label}
-                                </div>
-                            </div>
-                        ))}
+                    <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+                        <div className="text-center">
+                            <div className="text-3xl md:text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2">2+</div>
+                            <div className="text-gray-600 dark:text-gray-400">{t('stats.experience')}</div>
+                        </div>
+                        <div className="text-center">
+                            <div className="text-3xl md:text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2">10+</div>
+                            <div className="text-gray-600 dark:text-gray-400">{t('stats.projects')}</div>
+                        </div>
+                        <div className="text-center">
+                            <div className="text-3xl md:text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2">5+</div>
+                            <div className="text-gray-600 dark:text-gray-400">{t('stats.technologies')}</div>
+                        </div>
+                        <div className="text-center">
+                            <div className="text-3xl md:text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2">100%</div>
+                            <div className="text-gray-600 dark:text-gray-400">{t('stats.satisfaction')}</div>
+                        </div>
                     </div>
                 </div>
             </main>
