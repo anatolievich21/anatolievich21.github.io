@@ -25,6 +25,24 @@
     animation: bounce 2s infinite;
 }
 
+/* Language selector styles */
+select option {
+    background-color: white;
+    color: black;
+}
+
+@media (prefers-color-scheme: dark) {
+    select option {
+        background-color: #1f2937;
+        color: white;
+    }
+}
+
+.dark select option {
+    background-color: #1f2937;
+    color: white;
+}
+
 @keyframes fadeIn {
     0% {
         opacity: 0;

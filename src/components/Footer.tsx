@@ -2,18 +2,21 @@ import phone from "../img/icons/phone.svg";
 import telegram from "../img/icons/telegram.svg";
 import github from "../img/icons/github.svg";
 import linkedin from "../img/icons/linkedin.svg";
+import { useLanguage } from "../contexts/LanguageContext";
 
 const Footer = (): JSX.Element => {
+    const { t } = useLanguage();
+
     return (
         <footer className="mt-auto py-16 bg-gray-900 dark:bg-gray-950 text-white transition-colors duration-300">
             <div className="container mx-auto px-4 max-w-6xl">
                 <div className="flex flex-col items-center space-y-10">
                     <div className="text-center">
                         <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                            Let's Connect
+                            {t('footer.connect')}
                         </h3>
                         <p className="text-gray-400 dark:text-gray-500 mb-8">
-                            Feel free to reach out for collaborations or just a friendly hello!
+                            {t('footer.subtitle')}
                         </p>
                     </div>
 
@@ -66,7 +69,7 @@ const Footer = (): JSX.Element => {
 
                     <div className="text-center border-t border-gray-700 dark:border-gray-600 pt-8 w-full">
                         <p className="text-gray-400 dark:text-gray-500">
-                            © 2024 <span className="text-purple-400">anatolievich21</span>. Made with ❤️ and React
+                            © 2024 <span className="text-purple-400">anatolievich21</span>. {t('footer.copyright')}
                         </p>
                     </div>
                 </div>

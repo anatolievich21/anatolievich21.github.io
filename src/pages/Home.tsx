@@ -1,19 +1,22 @@
 import Header from "../components/Header";
+import { useLanguage } from "../contexts/LanguageContext";
 
 const Home = (): JSX.Element => {
+    const { t } = useLanguage();
+
     const skills = [
         {
-            category: "Frontend",
+            category: t('skills.frontend'),
             items: ["JavaScript", "TypeScript", "React", "Redux", "React Router", "Next.js", "HTML5", "CSS3", "Tailwind CSS", "SASS", "LESS", "BEM", "Bootstrap", "Material UI"],
             icon: "💻"
         },
         {
-            category: "Tools & Workflow",
+            category: t('skills.tools'),
             items: ["Git", "GitHub", "Bitbucket", "NPM", "PNPM", "Vite", "Webpack", "Trello", "Figma", "Photoshop"],
             icon: "🛠️"
         },
         {
-            category: "Currently Learning",
+            category: t('skills.learning'),
             items: ["Tailwind CSS", "Node.js", "Express", "GraphQL", "MongoDB", "React Native", "Three.js"],
             icon: "📚"
         }
@@ -64,9 +67,9 @@ const Home = (): JSX.Element => {
                     {/* Stats section */}
                     <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                         {[
-                            { number: "1+", label: "Years Experience" },
-                            { number: "20+", label: "Projects Completed" },
-                            { number: "15+", label: "Technologies" },
+                            { number: "2+", label: "Years Experience" },
+                            { number: "10+", label: "Projects Completed" },
+                            { number: "5+", label: "Technologies" },
                             { number: "100%", label: "Client Satisfaction" }
                         ].map((stat, index) => (
                             <div

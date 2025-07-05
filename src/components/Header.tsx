@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Header = (): JSX.Element => {
+    const { t } = useLanguage();
+
     return (
         <header className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 to-gray-800 dark:from-gray-950 dark:to-gray-900 text-white transition-all duration-500 relative overflow-hidden pt-16">
             {/* Animated background elements */}
@@ -17,16 +20,16 @@ const Header = (): JSX.Element => {
                 </div>
             </div>
 
-            <div className="text-center px-4 relative z-10 animate-fade-in">
+            <div className="relative z-10 text-center px-4">
                 <h1 className="text-4xl md:text-6xl font-sans font-light mb-8 leading-tight animate-slide-in">
-                    <strong className="font-bold">Hi, my name is <em className="text-purple-400 dark:text-purple-300">Vlad</em></strong><br />
+                    <strong className="font-bold">{t('home.greeting')} <em className="text-purple-400 dark:text-purple-300">{t('home.name')}</em></strong><br />
                     <span className="text-2xl md:text-4xl bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                        a frontend developer
+                        {t('home.title')}
                     </span>
                 </h1>
                 <div className="mb-8 animate-slide-in" style={{ animationDelay: '0.2s' }}>
                     <p className="text-lg md:text-xl text-gray-300 dark:text-gray-400">
-                        with passion for learning and creating.
+                        {t('home.subtitle')}
                     </p>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-in" style={{ animationDelay: '0.4s' }}>
@@ -36,18 +39,18 @@ const Header = (): JSX.Element => {
                         rel="noopener noreferrer"
                         className="inline-block h-12 px-7 py-3 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 text-white text-base font-medium tracking-wide transition-all duration-300 hover:opacity-90 hover:shadow-lg hover:shadow-purple-500/25"
                     >
-                        Download CV
+                        {t('home.downloadCV')}
                     </a>
                     <Link
                         to="/projects"
                         className="inline-block h-12 px-7 py-3 rounded-lg border-2 border-purple-500 text-purple-400 text-base font-medium tracking-wide transition-all duration-300 hover:bg-purple-500 hover:text-white shadow-lg"
                     >
-                        View Projects
+                        {t('home.viewProjects')}
                     </Link>
                 </div>
             </div>
         </header>
-    )
+    );
 }
 
-export default Header
+export default Header;

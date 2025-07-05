@@ -1,11 +1,17 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useTheme } from '../contexts/ThemeContext';
+import { useLanguage, Language } from '../contexts/LanguageContext';
 
 const Navbar = (): JSX.Element => {
     const location = useLocation();
     const { theme, toggleTheme } = useTheme();
+    const { language, setLanguage, t } = useLanguage();
 
     const isActive = (path: string) => location.pathname === path;
+
+    const handleLanguageChange = (lang: Language) => {
+        setLanguage(lang);
+    };
 
     return (
         <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 transition-all duration-300">
@@ -25,7 +31,7 @@ const Navbar = (): JSX.Element => {
                                 : 'text-gray-700 dark:text-gray-300'
                                 }`}
                         >
-                            Home
+                            {t('nav.home')}
                         </Link>
                         <Link
                             to="/projects"
@@ -34,7 +40,7 @@ const Navbar = (): JSX.Element => {
                                 : 'text-gray-700 dark:text-gray-300'
                                 }`}
                         >
-                            Projects
+                            {t('nav.projects')}
                         </Link>
                         <Link
                             to="/contacts"
@@ -43,12 +49,26 @@ const Navbar = (): JSX.Element => {
                                 : 'text-gray-700 dark:text-gray-300'
                                 }`}
                         >
-                            Contacts
+                            {t('nav.contacts')}
                         </Link>
                     </div>
 
-                    {/* Theme Toggle */}
+                    {/* Controls */}
                     <div className="flex items-center space-x-4">
+                        {/* Language Selector */}
+                        <div className="relative">
+                            <select
+                                value={language}
+                                onChange={(e) => handleLanguageChange(e.target.value as Language)}
+                                className="appearance-none bg-transparent border border-gray-300 dark:border-gray-600 rounded-md px-3 py-1 text-sm text-gray-700 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent cursor-pointer hover:border-purple-500 transition-colors duration-200"
+                            >
+                                <option value="en">EN</option>
+                                <option value="uk">UK</option>
+                                <option value="ru">RU</option>
+                            </select>
+                        </div>
+
+                        {/* Theme Toggle */}
                         <button
                             onClick={toggleTheme}
                             className="relative w-14 h-7 bg-gray-200 dark:bg-gray-700 rounded-full p-1 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
