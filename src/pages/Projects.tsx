@@ -63,8 +63,8 @@ const Projects = (): JSX.Element => {
                                 />
                                 <div className="absolute top-4 right-4">
                                     <span className={`px-3 py-1 rounded-full text-xs font-medium ${project.status === 'projects.status.completed'
-                                        ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400'
-                                        : 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400'
+                                        ? 'bg-green-100 text-green-800 dark:bg-green-600 dark:text-white'
+                                        : 'bg-yellow-100 text-yellow-800 dark:bg-yellow-500 dark:text-white'
                                         }`}>
                                         {t(project.status)}
                                     </span>

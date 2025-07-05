@@ -7,17 +7,17 @@ const Home = (): JSX.Element => {
     const skills = [
         {
             category: t('skills.frontend'),
-            items: ["JavaScript", "TypeScript", "React", "Redux", "React Router", "Next.js", "HTML5", "CSS3", "Tailwind CSS", "SASS", "LESS", "BEM", "Bootstrap", "Material UI"],
+            items: ["JavaScript", "TypeScript", "React", "Redux", "React Router", "HTML5", "CSS3", "SASS", "LESS", "BEM", "Bootstrap", "Material UI"],
             icon: "💻"
         },
         {
             category: t('skills.tools'),
-            items: ["Git", "GitHub", "Bitbucket", "NPM", "PNPM", "Vite", "Webpack", "Trello", "Figma", "Photoshop"],
+            items: ["Git", "GitHub", "GitLab", "Bitbucket", "NPM", "PNPM", "Vite", "Webpack", "Trello", "Figma", "Photoshop"],
             icon: "🛠️"
         },
         {
             category: t('skills.learning'),
-            items: ["Tailwind CSS", "Node.js", "Express", "GraphQL", "MongoDB", "React Native", "Three.js"],
+            items: ["Tailwind CSS", "SQL", "CI/CD", "Docker", "English", "AI"],
             icon: "📚"
         }
     ];
@@ -67,7 +67,7 @@ const Home = (): JSX.Element => {
                     {/* Stats section */}
                     <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
                         <div className="text-center">
-                            <div className="text-3xl md:text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2">2+</div>
+                            <div className="text-3xl md:text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2">{'1.5+'}</div>
                             <div className="text-gray-600 dark:text-gray-400">{t('stats.experience')}</div>
                         </div>
                         <div className="text-center">
@@ -80,7 +80,7 @@ const Home = (): JSX.Element => {
                         </div>
                         <div className="text-center">
                             <div className="text-3xl md:text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2">100%</div>
-                            <div className="text-gray-600 dark:text-gray-400">{t('stats.satisfaction')}</div>
+                            <div className="text-gray-600 dark:text-gray-400">{t('stats.uptime')}</div>
                         </div>
                     </div>
                 </div>

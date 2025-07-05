@@ -25,6 +25,8 @@ const translations: Record<Language, Record<string, string>> = {
         'nav.home': 'Home',
         'nav.projects': 'Projects',
         'nav.contacts': 'Contacts',
+        'nav.theme': 'Theme',
+        'nav.language': 'Language',
 
         // Home page
         'home.greeting': 'Hi, my name is',
@@ -45,7 +47,7 @@ const translations: Record<Language, Record<string, string>> = {
         'stats.experience': 'Years Experience',
         'stats.projects': 'Projects Completed',
         'stats.technologies': 'Technologies',
-        'stats.satisfaction': 'Client Satisfaction',
+        'stats.uptime': 'Code Quality',
 
         // Footer
         'footer.connect': "Let's Connect",
@@ -84,6 +86,8 @@ const translations: Record<Language, Record<string, string>> = {
         'nav.home': 'Головна',
         'nav.projects': 'Проекти',
         'nav.contacts': 'Контакти',
+        'nav.theme': 'Тема',
+        'nav.language': 'Мова',
 
         // Home page
         'home.greeting': 'Привіт, мене звати',
@@ -104,7 +108,7 @@ const translations: Record<Language, Record<string, string>> = {
         'stats.experience': 'Років досвіду',
         'stats.projects': 'Проектів завершено',
         'stats.technologies': 'Технологій',
-        'stats.satisfaction': 'Задоволення клієнтів',
+        'stats.uptime': 'Якість коду',
 
         // Footer
         'footer.connect': "Давайте зв'яжемося",
@@ -143,6 +147,8 @@ const translations: Record<Language, Record<string, string>> = {
         'nav.home': 'Главная',
         'nav.projects': 'Проекты',
         'nav.contacts': 'Контакты',
+        'nav.theme': 'Тема',
+        'nav.language': 'Язык',
 
         // Home page
         'home.greeting': 'Привет, меня зовут',
@@ -163,7 +169,7 @@ const translations: Record<Language, Record<string, string>> = {
         'stats.experience': 'Лет опыта',
         'stats.projects': 'Проектов завершено',
         'stats.technologies': 'Технологий',
-        'stats.satisfaction': 'Удовлетворенность клиентов',
+        'stats.uptime': 'Качество кода',
 
         // Footer
         'footer.connect': 'Давайте свяжемся',

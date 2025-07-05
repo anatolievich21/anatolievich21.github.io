@@ -69,7 +69,7 @@ const Footer = (): JSX.Element => {
 
                     <div className="text-center border-t border-gray-700 dark:border-gray-600 pt-8 w-full">
                         <p className="text-gray-400 dark:text-gray-500">
-                            © 2024 <span className="text-purple-400">anatolievich21</span>. {t('footer.copyright')}
+                            © 2025 <span className="text-purple-400">anatolievich21</span>. {t('footer.copyright')}
                         </p>
                     </div>
                 </div>
